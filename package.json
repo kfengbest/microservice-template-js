@@ -1,0 +1,13 @@
+{
+  "name": "microservice-template",
+  "version": "1.0.0",
+  "description": "A microservice template",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}

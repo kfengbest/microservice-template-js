@@ -1,0 +1,9 @@
+workflow-aggregator 
+job-dsl 
+git 
+mailer 
+pipeline-model-definition 
+aws-credentials 
+s3 
+pipeline-aws
+
