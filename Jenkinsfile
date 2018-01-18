@@ -34,7 +34,7 @@ pipeline {
             steps {
                 kubernetesDeploy(
                         credentialsType: 'KubeConfig',
-                        kubeConfig: [path: 'kubeconfig'],
+                        kubeConfig: [path: '/usr/share/jenkins/ref/init.groovy.d/kubeconfig'],
                         configs: '*.yaml',
                         enableConfigSubstitution: false,
                 )
