@@ -1,4 +1,4 @@
 {
-    "repo" : "https://git.autodesk.com/fengka/microservice-template.git",
+    "repo" : "https://git.autodesk.com/fengka/microservice-template-js.git",
     "branch" : ["master", "staging", "prd"]
 }
