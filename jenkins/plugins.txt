@@ -6,4 +6,6 @@ pipeline-model-definition
 aws-credentials 
 s3 
 pipeline-aws
+kubernetes-cd
+blueocean
 
