@@ -10,3 +10,6 @@ def creds = jsonSlurper.parseText(textJson)
 System.setProperty("AWS_ACCESS_KEY", creds.AWS_ACCESS_KEY);
 System.setProperty("AWS_ACCESS_SECRET", creds.AWS_ACCESS_SECRET);
 
+System.setProperty("GIT_USER_NAME", creds.GIT_USER_NAME);
+System.setProperty("GIT_USER_PASSWORD", creds.GIT_USER_PASSWORD);
+

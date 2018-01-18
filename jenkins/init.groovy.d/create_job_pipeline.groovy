@@ -12,13 +12,26 @@ import hudson.plugins.git.GitSCM
 import java.util.logging.Logger
 import hudson.plugins.git.*;
 import hudson.triggers.SCMTrigger
+import groovy.json.JsonSlurper
 
-def pipeline_jobs = ["master", "staging", "prd"]
+import com.cloudbees.plugins.credentials.*
+import com.cloudbees.plugins.credentials.domains.*
+import com.cloudbees.plugins.credentials.common.*
+import com.cloudbees.jenkins.plugins.sshcredentials.impl.*
 
-def pipeline_repo = "https://github.com/kfengbest/microservice-template.git"
+def textJson = new File("/var/jenkins_home/init.groovy.d/git.json").text
+def jsonSlurper = new JsonSlurper()
+def gitJson = jsonSlurper.parseText(textJson)
+
+def pipeline_jobs = gitJson.branch
+def pipeline_repo = gitJson.repo
 def pipeline_file = "Jenkinsfile"
 
-def userRemoteConfig = new UserRemoteConfig(pipeline_repo, null, null, null)
+def idMatcher = CredentialsMatchers.withId("global_usnp_git");
+available_credentials = CredentialsProvider.lookupCredentials(UsernamePasswordCredentials.class)
+existing_credentials =CredentialsMatchers.firstOrNull( available_credentials, idMatcher )
+
+def userRemoteConfig = new UserRemoteConfig(pipeline_repo, null, null, existing_credentials.id)
 def scmTrigger = new SCMTrigger('* * * * *')
 
 
