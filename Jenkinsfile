@@ -17,6 +17,20 @@ pipeline {
                 sh "git archive -v -o artifect.zip --format=zip HEAD"
             }
         }
+        stage('Docker Build') {
+            steps {
+                sh "docker build -t kfengbest/mst-js:latest ."
+            }
+        }
+        stage('Docker Push') {
+            agent any
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+                sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+                sh 'docker push kfengbest/mst-js:latest:latest'
+                }
+            }
+        }  
         stage('Upload to S3') {
             steps {
                 withAWS(region:"us-east-1",credentials:"global_usnp_aws_r") {

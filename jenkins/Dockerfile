@@ -12,3 +12,9 @@ COPY ./configs /usr/share/jenkins/ref/init.groovy.d/
 COPY ./init.groovy.d /usr/share/jenkins/ref/init.groovy.d/
 
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
+
+RUN apt-get update && apt-get install -y zip unzip
+
+# install docker
+COPY install-docker.sh /install-docker.sh
+RUN /install-docker.sh
