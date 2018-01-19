@@ -5,7 +5,7 @@ metadata:
   labels:
     app: my-app
 spec:
-  replicas: 3
+  replicas: 50
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -28,4 +28,4 @@ spec:
         - containerPort: 8080
         env:
         - name: VERSION
-          value: v7.0.0
+          value: v8.0.0
