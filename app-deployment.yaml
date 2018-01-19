@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: my-app
-        image: nginx:1.7.9
+        image: kfengbest/mst-js:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
