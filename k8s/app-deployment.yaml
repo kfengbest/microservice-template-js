@@ -23,7 +23,7 @@ spec:
       containers:
       - name: my-app
         image: kfengbest/mst-js:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
         env:
