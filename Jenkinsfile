@@ -43,7 +43,7 @@ pipeline {
                 kubernetesDeploy(
                         credentialsType: 'KubeConfig',
                         kubeConfig: [path: '/usr/share/jenkins/ref/init.groovy.d/kubeconfig'],
-                        configs: '*.yaml',
+                        configs: './k8s/*.yaml',
                         enableConfigSubstitution: false,
                 )
             }
