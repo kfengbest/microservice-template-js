@@ -13,3 +13,6 @@ System.setProperty("AWS_ACCESS_SECRET", creds.AWS_ACCESS_SECRET);
 System.setProperty("GIT_USER_NAME", creds.GIT_USER_NAME);
 System.setProperty("GIT_USER_PASSWORD", creds.GIT_USER_PASSWORD);
 
+System.setProperty("DOCKERHUB_USER_NAME", creds.DOCKERHUB_USER_NAME);
+System.setProperty("DOCKERHUB_USER_PASSWORD", creds.DOCKERHUB_USER_PASSWORD);
+
