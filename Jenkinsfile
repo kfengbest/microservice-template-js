@@ -10,7 +10,6 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'cat app-deployment.yaml'
             }
         }
         stage('Packaging'){
