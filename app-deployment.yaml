@@ -22,7 +22,7 @@ spec:
         image: kfengbest/mst-js:latest
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 80
+        - containerPort: 3000
         env:
         - name: VERSION
           value: v1.0.0
