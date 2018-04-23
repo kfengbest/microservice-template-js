@@ -30,11 +30,23 @@ pipeline {
                 sh "docker tag ft-tho-dev:v1 823140877761.dkr.ecr.us-east-1.amazonaws.com/ft-tho-dev:latest"
             }
         }
+        
         stage('Docker Push') {
+            environment {
+                AWS_ECR_LOGIN='true'
+                AWS_ECR_LOGIN_REGISTRY_IDS='823140877761'
+                AWS_DEFAULT_REGION='us-east-1'
+                AWS_REGION='us-east-1'
+            }              
             steps {
                 echo 'Docker Push..'
+    
+                sh "\$(\${HOME}/.local/bin/aws ecr get-login --no-include-email &> /dev/null)"
+                sh "cp \${HOME}/.docker/config.json \${HOME}/.dockercfg"
+                
                 withDockerRegistry([credentialsId: 'ecr:us-east-1:global_usnp_aws_r', url: 'https://823140877761.dkr.ecr.us-east-1.amazonaws.com']) {
-                    sh "docker push 823140877761.dkr.ecr.us-east-1.amazonaws.com/ft-tho-dev:latest"
+                    def image = docker.build("823140877761.dkr.ecr.us-east-1.amazonaws.com/ft-tho-dev:latest")
+                    image.push()
                 }
 
             }
