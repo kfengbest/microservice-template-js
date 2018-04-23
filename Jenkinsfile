@@ -17,7 +17,13 @@ pipeline {
                 sh "git archive -v -o artifect.zip --format=zip HEAD"
             }
         }
-
+        stage('Upload to S3') {
+            steps {
+                withAWS(region:"us-east-1",credentials:"global_usnp_aws_r") {
+                    s3Upload(file:"artifect.zip", bucket:"fusionteam-tho-dev",path:"artifect.zip")
+                }
+            }
+        }  
         stage('Docker Build') {
             steps {
                 sh "docker build -t ft-tho-dev:latest ."
@@ -29,12 +35,6 @@ pipeline {
                 echo 'Docker Push..'
             }
         }  
-        stage('Upload to S3') {
-            steps {
-                withAWS(region:"us-east-1",credentials:"global_usnp_aws_r") {
-                    s3Upload(file:"artifect.zip", bucket:"fusionteam-tho-dev",path:"artifect.zip")
-                }
-            }
-        }                       
+                     
     }
 }
