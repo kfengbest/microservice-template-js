@@ -45,8 +45,7 @@ pipeline {
                 sh "cp \${HOME}/.docker/config.json \${HOME}/.dockercfg"
                 
                 withDockerRegistry([credentialsId: 'ecr:us-east-1:global_usnp_aws_r', url: 'https://823140877761.dkr.ecr.us-east-1.amazonaws.com']) {
-                    def image = docker.build("823140877761.dkr.ecr.us-east-1.amazonaws.com/ft-tho-dev:latest")
-                    image.push()
+                    sh "docker push 823140877761.dkr.ecr.us-east-1.amazonaws.com/ft-tho-dev:latest"
                 }
 
             }
