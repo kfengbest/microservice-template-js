@@ -33,6 +33,10 @@ pipeline {
         stage('Docker Push') {
             steps {
                 echo 'Docker Push..'
+                withDockerRegistry([credentialsId: 'global_usnp_aws_r', url: '823140877761.dkr.ecr.us-east-1.amazonaws.com/ft-tho-dev']) {
+                    sh "docker push 823140877761.dkr.ecr.us-east-1.amazonaws.com/ft-tho-dev:latest"
+                }
+
             }
         }  
                      
