@@ -7,7 +7,7 @@
   },
   "Ports":[
     {
-      "ContainerPort":8443
+      "ContainerPort":443
     }
 
   ]
