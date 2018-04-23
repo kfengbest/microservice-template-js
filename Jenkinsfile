@@ -40,9 +40,6 @@ pipeline {
             }              
             steps {
                 echo 'Docker Push..'
-    
-                sh "\$(\${HOME}/.local/bin/aws ecr get-login --no-include-email &> /dev/null)"
-                sh "cp \${HOME}/.docker/config.json \${HOME}/.dockercfg"
                 
                 withDockerRegistry([credentialsId: 'ecr:us-east-1:global_usnp_aws_r', url: 'https://823140877761.dkr.ecr.us-east-1.amazonaws.com']) {
                     sh "docker push 823140877761.dkr.ecr.us-east-1.amazonaws.com/ft-tho-dev:latest"
