@@ -2,6 +2,7 @@
   "AWSEBDockerrunVersion": "1",
   "Logging": "/tmp/sample-app",
   "Image": {
+    "Name": "823140877761.dkr.ecr.us-east-1.amazonaws.com/ft-tho-dev:latest",
   	"Update": "false"
   }
 }
