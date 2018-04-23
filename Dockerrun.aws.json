@@ -4,5 +4,11 @@
   "Image": {
     "Name": "823140877761.dkr.ecr.us-east-1.amazonaws.com/ft-tho-dev:latest",
   	"Update": "true"
-  }
+  },
+  "Ports":[
+    {
+      "ContainerPort":8443
+    }
+
+  ]
 }
