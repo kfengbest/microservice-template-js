@@ -40,12 +40,14 @@ pipeline {
             }              
             steps {
                 echo 'Docker Push..'
-
-                withDockerRegistry([credentialsId: 'ecr:us-east-1:global_usnp_aws_r', url: 'https://823140877761.dkr.ecr.us-east-1.amazonaws.com']) {
-                    // some block
-                    sh "docker push 823140877761.dkr.ecr.us-east-1.amazonaws.com/ft-tho-dev:latest"
+                script{
+                    docker.withRegistry('https://823140877761.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:kf-ecr-credentials') {
+                        sh "cat /var/jenkins_home/.dockercfg"
+                        sh "cp /var/jenkins_home/.dockercfg ~/.dockercfg"
+                        sh "docker images"
+                        sh "docker push 823140877761.dkr.ecr.us-east-1.amazonaws.com/ft-tho-dev:latest"
+                    }
                 }
-
             }
         }  
                      
