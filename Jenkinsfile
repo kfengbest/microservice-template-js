@@ -31,13 +31,7 @@ pipeline {
             }
         }
         
-        stage('Docker Push') {
-            environment {
-                AWS_ECR_LOGIN='true'
-                AWS_ECR_LOGIN_REGISTRY_IDS='823140877761'
-                AWS_DEFAULT_REGION='us-east-1'
-                AWS_REGION='us-east-1'
-            }              
+        stage('Docker Push') {            
             steps {
                 echo 'Docker Push..'
                 script{
