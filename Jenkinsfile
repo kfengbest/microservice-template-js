@@ -42,9 +42,7 @@ pipeline {
                 echo 'Docker Push..'
                 script{
                     docker.withRegistry('https://823140877761.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:kf-ecr-credentials') {
-                        sh "cat /var/jenkins_home/.dockercfg"
                         sh "cp /var/jenkins_home/.dockercfg ~/.dockercfg"
-                        sh "docker images"
                         sh "docker push 823140877761.dkr.ecr.us-east-1.amazonaws.com/ft-tho-dev:latest"
                     }
                 }
